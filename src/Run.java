@@ -47,8 +47,7 @@ public class Run {
                     homeScore = scanner.nextInt();
                     System.out.println("Enter away team score");
                     awayScore = scanner.nextInt();
-                    scoreBoard.finishGame(homeTeam, awayTeam, homeScore, awayScore);
-                    System.out.println("Game finished: " + homeTeam + " " + homeScore + " - " + awayScore + " " + awayTeam);
+                    System.out.println(scoreBoard.finishGame(homeTeam, awayTeam, homeScore, awayScore));
                     break;
                 case 4:
                     List<Match> liveSummary = scoreBoard.liveMatchesSummary();
