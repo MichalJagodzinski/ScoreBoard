@@ -6,8 +6,8 @@ package src.teamSpecify;
 public class Match {
     public String homeTeam;
     public String awayTeam;
-    public int homeScore = 0;
-    public int awayScore = 0;
+    public int homeScore;
+    public int awayScore;
 
     public Match(String homeTeam, String awayTeam, int homeScore, int awayScore) {
         this.homeTeam = homeTeam;
@@ -20,10 +20,17 @@ public class Match {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
     }
+    public void updateScore(int homeScore, int awayScore) {
+        this.homeScore = homeScore;
+        this.awayScore = awayScore;
+    }
 
+    public int getTotalScore() {
+        return homeScore + awayScore;
+    }
     @Override
     public String toString() {
-        return homeTeam + " " + homeScore + ":" + awayScore + " " + awayTeam + "\n";
+        return homeTeam + " " + homeScore + "-" + awayScore + " " + awayTeam + "\n";
     }
 
     public String getHomeTeam() {
