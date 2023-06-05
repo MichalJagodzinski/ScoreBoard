@@ -36,8 +36,7 @@ public class Run {
                     System.out.println("Enter away team score");
                     awayScore = scanner.nextInt();
                     scanner.nextLine();
-                    scoreBoard.updateScore(homeTeam, homeScore, awayScore, awayTeam);
-                    System.out.println("Score updated: " + homeTeam + " " + homeScore + " - " + awayScore + " " + awayTeam);
+                    System.out.println(scoreBoard.updateScore(homeTeam, homeScore, awayScore, awayTeam));
                     break;
                 case 3:
                     System.out.println("Enter home team: ");

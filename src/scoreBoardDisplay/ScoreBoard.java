@@ -19,20 +19,24 @@ public class ScoreBoard {
         newMatches.add(match);
     }
 
-    public void updateScore(String homeTeam, int homeScore, int awayScore, String awayTeam) {
+    public String updateScore(String homeTeam, int homeScore, int awayScore, String awayTeam) {
         for (Match match : newMatches) {
             if (match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam)) {
                 match.updateScore(homeScore, awayScore);
+                return match.toString();
             }
         }
+        return "Wrong teams";
     }
 
-    public void finishGame(String homeTeam, String awayTeam, int homeScore, int awayScore){
+    public String finishGame(String homeTeam, String awayTeam, int homeScore, int awayScore){
         if (newMatches.removeIf(match -> match.homeTeam.equals(homeTeam) && match.awayTeam.equals(awayTeam)
                 && match.homeScore == homeScore && match.awayScore == awayScore)) {
             Match match = new Match(homeTeam, awayTeam, homeScore, awayScore);
             endedMatches.add(match);
+            return match.toString();
         }
+        return "Wrong teams";
     }
 
     public List<Match> liveMatchesSummary(){
@@ -42,12 +46,7 @@ public class ScoreBoard {
     }
 
     public List<Match> endedMatchesSummary(){
-        List<Match> endedSummary = new ArrayList<>();
-        for (Match match : endedMatches){
-            if (match.getTotalScore() != 0){
-                endedSummary.add(match);
-            }
-        }
+        List<Match> endedSummary = new ArrayList<>(endedMatches);
         endedSummary.sort(Comparator.comparingInt(Match::getTotalScore).reversed().thenComparing(Match::toString));
         return endedSummary;
     }
