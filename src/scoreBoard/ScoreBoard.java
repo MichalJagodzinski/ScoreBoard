@@ -10,14 +10,6 @@ public class ScoreBoard {
     List<Match> newMatches;
     List<Match> endedMatches;
 
-    public List<Match> getNewMatches() {
-        return newMatches;
-    }
-
-    public List<Match> getEndedMatches() {
-        return endedMatches;
-    }
-
     public ScoreBoard() {
         this.newMatches = new ArrayList<>();
         this.endedMatches = new ArrayList<>();

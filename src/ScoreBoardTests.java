@@ -8,39 +8,40 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ScoreBoardTests {
     ScoreBoard scoreBoard;
+
     @BeforeEach
-    private void setUp(){
+    private void setUp() {
         this.scoreBoard = new ScoreBoard();
     }
 
     @Test
-    public void newMatchTest(){
+    public void newMatchTest() {
         scoreBoard.newMatch("Poland", "Spain");
         assertEquals(1, scoreBoard.liveMatchesSummary().size());
     }
 
     @Test
-    public void updateScoreTest(){
+    public void updateScoreTest() {
         scoreBoard.newMatch("Poland", "Spain");
         scoreBoard.updateScore("Poland", 1, 0, "Spain");
         assertEquals(1, scoreBoard.liveMatchesSummary().size());
     }
 
     @Test
-    public void finishGameTest(){
+    public void finishGameTest() {
         scoreBoard.newMatch("Poland", "Spain");
         scoreBoard.finishGame("Poland", "Spain");
         assertEquals(1, scoreBoard.endedMatchesSummary().size());
     }
 
     @Test
-    public void liveMatchesSummaryTest(){
+    public void liveMatchesSummaryTest() {
         scoreBoard.newMatch("Poland", "Spain");
         assertEquals(1, scoreBoard.liveMatchesSummary().size());
     }
 
     @Test
-    public void endedMatchesSummary(){
+    public void endedMatchesSummary() {
         scoreBoard.newMatch("Poland", "Spain");
         scoreBoard.finishGame("Poland", "Spain");
         assertEquals(1, scoreBoard.endedMatchesSummary().size());

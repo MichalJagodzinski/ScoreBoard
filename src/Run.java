@@ -40,7 +40,7 @@ public class Run {
                     homeTeam = scanner.next();
                     System.out.println("Enter away team");
                     awayTeam = scanner.next();
-                    System.out.println("Match finished: " +scoreBoard.finishGame(homeTeam, awayTeam));
+                    System.out.println("Match finished: " + scoreBoard.finishGame(homeTeam, awayTeam));
                     break;
                 case 4:
                     List<Match> liveSummary = scoreBoard.liveMatchesSummary();
@@ -55,7 +55,7 @@ public class Run {
                     List<Match> endedSummary = scoreBoard.endedMatchesSummary();
                     System.out.println("Ended matches summary: ");
                     place = 1;
-                    for (Match match : endedSummary){
+                    for (Match match : endedSummary) {
                         System.out.println(place + ". " + match.toString());
                         place++;
                     }
