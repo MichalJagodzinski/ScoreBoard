@@ -7,7 +7,7 @@ import src.scoreBoard.ScoreBoard;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ScoreBoardTests {
-    ScoreBoard scoreBoard;
+    private ScoreBoard scoreBoard;
 
     @BeforeEach
     private void setUp() {
@@ -37,13 +37,22 @@ public class ScoreBoardTests {
     @Test
     public void liveMatchesSummaryTest() {
         scoreBoard.newMatch("Poland", "Spain");
-        assertEquals(1, scoreBoard.liveMatchesSummary().size());
+        scoreBoard.newMatch("Mexico", "Canada");
+        scoreBoard.newMatch("USA", "Brazil");
+        scoreBoard.newMatch("Argentina", "Germany");
+        assertEquals(4, scoreBoard.liveMatchesSummary().size());
     }
 
     @Test
     public void endedMatchesSummary() {
         scoreBoard.newMatch("Poland", "Spain");
+        scoreBoard.newMatch("Mexico", "Canada");
+        scoreBoard.newMatch("USA", "Brazil");
+        scoreBoard.newMatch("Argentina", "Germany");
         scoreBoard.finishGame("Poland", "Spain");
-        assertEquals(1, scoreBoard.endedMatchesSummary().size());
+        scoreBoard.finishGame("Mexico", "Canada");
+        scoreBoard.finishGame("USA", "Brazil");
+        scoreBoard.finishGame("Argentina", "Germany");
+        assertEquals(4, scoreBoard.endedMatchesSummary().size());
     }
 }

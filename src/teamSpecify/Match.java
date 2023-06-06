@@ -1,6 +1,5 @@
 package src.teamSpecify;
 
-
 public class Match {
     public String homeTeam;
     public String awayTeam;
@@ -21,20 +20,16 @@ public class Match {
         return homeScore + awayScore;
     }
 
-    @Override
-    public String toString() {
-        return homeTeam + " " + homeScore + "-" + awayScore + " " + awayTeam + "\n";
-    }
-
     public String getHomeTeam() {
         return homeTeam;
     }
 
-    public void setHomeTeam(String homeTeam) {
-        this.homeTeam = homeTeam;
-    }
-
     public String getAwayTeam() {
         return awayTeam;
+    }
+
+    @Override
+    public String toString() {
+        return homeTeam + " " + homeScore + "-" + awayScore + " " + awayTeam + "\n";
     }
 }

@@ -7,8 +7,8 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ScoreBoard {
-    List<Match> newMatches;
-    List<Match> endedMatches;
+    private List<Match> newMatches;
+    private List<Match> endedMatches;
 
     public ScoreBoard() {
         this.newMatches = new ArrayList<>();
@@ -16,18 +16,21 @@ public class ScoreBoard {
     }
 
     public String newMatch(String homeTeam, String awayTeam) {
+        for (Match match : newMatches) {
+            if (match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam))
+                return "One of this teams are playing now! One team can't play two games in the same time!";
+        }
         Match match = new Match(homeTeam, awayTeam);
         newMatches.add(match);
         return match.toString();
     }
 
     public String updateScore(String homeTeam, int homeScore, int awayScore, String awayTeam) {
-        for (Match match : newMatches) {
+        for (Match match : newMatches)
             if (match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam)) {
                 match.updateScore(homeScore, awayScore);
                 return match.toString();
             }
-        }
         return "Wrong teams";
     }
 
