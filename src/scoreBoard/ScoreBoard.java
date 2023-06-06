@@ -9,12 +9,21 @@ import java.util.List;
 public class ScoreBoard {
     List<Match> newMatches;
     List<Match> endedMatches;
-    public ScoreBoard(){
+
+    public List<Match> getNewMatches() {
+        return newMatches;
+    }
+
+    public List<Match> getEndedMatches() {
+        return endedMatches;
+    }
+
+    public ScoreBoard() {
         this.newMatches = new ArrayList<>();
         this.endedMatches = new ArrayList<>();
     }
 
-    public String newMatch(String homeTeam, String awayTeam){
+    public String newMatch(String homeTeam, String awayTeam) {
         Match match = new Match(homeTeam, awayTeam);
         newMatches.add(match);
         return match.toString();
@@ -30,22 +39,26 @@ public class ScoreBoard {
         return "Wrong teams";
     }
 
-    public String finishGame(String homeTeam, String awayTeam, int homeScore, int awayScore){
-        if (newMatches.removeIf(match -> match.homeTeam.equals(homeTeam) && match.awayTeam.equals(awayTeam))) {
-            Match match = new Match(homeTeam, awayTeam, homeScore, awayScore);
-            endedMatches.add(match);
-            return match.toString();
+    public String finishGame(String homeTeam, String awayTeam) {
+        Match endedMatch;
+        for (Match match : newMatches) {
+            if ((match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam))) {
+                endedMatch = match;
+                newMatches.remove(match);
+                endedMatches.add(endedMatch);
+                return endedMatch.toString();
+            }
         }
         return "Wrong teams";
     }
 
-    public List<Match> liveMatchesSummary(){
+    public List<Match> liveMatchesSummary() {
         List<Match> liveSummary = new ArrayList<>(newMatches);
         liveSummary.sort(Comparator.comparingInt(Match::getTotalScore).reversed().thenComparing(Match::toString));
         return liveSummary;
     }
 
-    public List<Match> endedMatchesSummary(){
+    public List<Match> endedMatchesSummary() {
         List<Match> endedSummary = new ArrayList<>(endedMatches);
         endedSummary.sort(Comparator.comparingInt(Match::getTotalScore).reversed().thenComparing(Match::toString));
         return endedSummary;
