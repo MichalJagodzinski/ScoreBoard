@@ -1,7 +1,7 @@
 package src;
 
 
-import src.scoreBoardDisplay.ScoreBoard;
+import src.scoreBoard.ScoreBoard;
 import src.teamSpecify.Match;
 
 import java.util.List;
@@ -21,10 +21,7 @@ public class Run {
                     String homeTeam = scanner.next();
                     System.out.println("Enter away team: ");
                     String awayTeam = scanner.next();
-                    int homeScore = 0;
-                    int awayScore = 0;
-                    scoreBoard.newMatch(homeTeam, awayTeam, homeScore, awayScore);
-                    System.out.println("New game started: " + homeTeam + " " + homeScore + " - " + awayScore + " " + awayTeam);
+                    System.out.println("Match started: " + scoreBoard.newMatch(homeTeam, awayTeam));
                     break;
                 case 2:
                     System.out.println("Enter home team: ");
@@ -32,11 +29,11 @@ public class Run {
                     System.out.println("Enter away team");
                     awayTeam = scanner.next();
                     System.out.println("Enter home team score");
-                    homeScore = scanner.nextInt();
+                    int homeScore = scanner.nextInt();
                     System.out.println("Enter away team score");
-                    awayScore = scanner.nextInt();
+                    int awayScore = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.println(scoreBoard.updateScore(homeTeam, homeScore, awayScore, awayTeam));
+                    System.out.println("Scoreboard updated: " + scoreBoard.updateScore(homeTeam, homeScore, awayScore, awayTeam));
                     break;
                 case 3:
                     System.out.println("Enter home team: ");
@@ -47,7 +44,7 @@ public class Run {
                     homeScore = scanner.nextInt();
                     System.out.println("Enter away team score");
                     awayScore = scanner.nextInt();
-                    System.out.println(scoreBoard.finishGame(homeTeam, awayTeam, homeScore, awayScore));
+                    System.out.println("Match finished: " +scoreBoard.finishGame(homeTeam, awayTeam, homeScore, awayScore));
                     break;
                 case 4:
                     List<Match> liveSummary = scoreBoard.liveMatchesSummary();
@@ -68,7 +65,6 @@ public class Run {
                     }
                     break;
                 case 6:
-                    System.out.println("Breaking");
                     System.exit(0);
                 default:
                     System.out.println("Choice not found");

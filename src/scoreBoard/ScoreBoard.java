@@ -1,4 +1,4 @@
-package src.scoreBoardDisplay;
+package src.scoreBoard;
 
 import src.teamSpecify.Match;
 
@@ -14,9 +14,10 @@ public class ScoreBoard {
         this.endedMatches = new ArrayList<>();
     }
 
-    public void newMatch(String homeTeam, String awayTeam, int homeScore, int awayScore){
-        Match match = new Match(homeTeam, awayTeam, homeScore, awayScore);
+    public String newMatch(String homeTeam, String awayTeam){
+        Match match = new Match(homeTeam, awayTeam);
         newMatches.add(match);
+        return match.toString();
     }
 
     public String updateScore(String homeTeam, int homeScore, int awayScore, String awayTeam) {
@@ -30,8 +31,7 @@ public class ScoreBoard {
     }
 
     public String finishGame(String homeTeam, String awayTeam, int homeScore, int awayScore){
-        if (newMatches.removeIf(match -> match.homeTeam.equals(homeTeam) && match.awayTeam.equals(awayTeam)
-                && match.homeScore == homeScore && match.awayScore == awayScore)) {
+        if (newMatches.removeIf(match -> match.homeTeam.equals(homeTeam) && match.awayTeam.equals(awayTeam))) {
             Match match = new Match(homeTeam, awayTeam, homeScore, awayScore);
             endedMatches.add(match);
             return match.toString();

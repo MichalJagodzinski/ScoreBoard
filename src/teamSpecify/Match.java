@@ -6,8 +6,8 @@ package src.teamSpecify;
 public class Match {
     public String homeTeam;
     public String awayTeam;
-    public int homeScore;
-    public int awayScore;
+    public int homeScore = 0;
+    public int awayScore = 0;
 
     public Match(String homeTeam, String awayTeam, int homeScore, int awayScore) {
         this.homeTeam = homeTeam;
